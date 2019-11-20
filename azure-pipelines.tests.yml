@@ -1,2 +1,11 @@
 steps:
-- script: echo "Hello"
+- pwsh: |
+    $res = Invoke-RestMethod -Method GET -Uri "https://engage2019-dev-westeurope.azurewebsites.net/api/GetServiceInfo?name=test"
+    $test = $res -eq "Hello, test"
+    Write-Host "Response: $res"
+    Write-Host "Test Result: $test"
+    if ($test -ne "True")
+    {
+        throw [System.Exception];
+    }
+    
