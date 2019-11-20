@@ -39,6 +39,11 @@ stages:
               targetPath: '$(Pipeline.Workspace)/app'
               artifact: 'build'
               publishLocation: 'pipeline'
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: 'templates/deploy.ps1'
+              artifact: 'arm'
+              publishLocation: 'pipeline'
           
   - stage: dev
     displayName: Development
