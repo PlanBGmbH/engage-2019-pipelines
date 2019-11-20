@@ -11,9 +11,8 @@ steps:
     azureSubscription: 'Visual Studio Enterprise – MPN'
     scriptType: 'ps'
     scriptLocation: 'scriptPath'
-    scriptPath: 'templates/deploy.ps1'
-    arguments: '-location ${{ parameters.location }}'
-    workingDirectory: '$(Pipeline.Workspace)'
+    scriptPath: '$(Pipeline.Workspace)/templates/deploy.ps1'
+    arguments: '-location ${{ parameters.location }}'    
   
 - task: AzureFunctionApp@1
   displayName: Deploy Function App
