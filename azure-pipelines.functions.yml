@@ -1,0 +1,12 @@
+parameters:  
+  location: 'westeurope'
+
+steps:
+- download: build
+- task: AzureFunctionApp@1
+  displayName: Deploy Function App
+  inputs:
+    appName: $name-$stage-${{ parameters.location }}
+    resourceGroupName: $name-$stage-$location
+    azureSubscription: 
+    appType: functionApp
