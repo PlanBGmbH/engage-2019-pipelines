@@ -13,12 +13,13 @@ steps:
     scriptLocation: 'scriptPath'
     scriptPath: 'templates/deploy.ps1'
     arguments: '-location ${{ parameters.location }}'
+    workingDirectory: '$(Pipeline.Workspace)'
   
 - task: AzureFunctionApp@1
   displayName: Deploy Function App
   inputs:
-    appName: $name-$stage-${{ parameters.location }}
-    resourceGroupName: $name-$stage-$location
-    azureSubscription: Visual Studio Enterprise – MPN
-    appType: functionApp
-    package: app.zip
+    azureSubscription: 'Visual Studio Enterprise – MPN'
+    appType: 'functionApp'
+    appName: '$name-$stage-${{ parameters.location }}'
+    package: '$(Pipeline.Workspace)/build/app.zip'
+    deploymentMethod: 'auto'
