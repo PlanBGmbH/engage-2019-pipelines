@@ -7,6 +7,9 @@ trigger:
 - hotfix/*
 - refs/tags/*
 
+variables:
+   name: engage2019
+
 stages:      
   - stage: build
     displayName: Build    

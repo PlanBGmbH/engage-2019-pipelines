@@ -2,7 +2,7 @@ Param(
     [string]$location
 )
 
-$stage = $(env:SYSTEM_STAGENAME)
+$stage = $($env:SYSTEM_STAGENAME)
 
 $group = (az group create --location $location --name "$name-$stage-$location") | ConvertFrom-Json
 Write-Host "Created ResourceGroup $($group.Name)"
