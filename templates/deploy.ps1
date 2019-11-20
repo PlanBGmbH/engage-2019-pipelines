@@ -1,9 +1,9 @@
 Param(
-    [string]$location
+    [string]$location,
+    [string]$name
 )
 
 $stage = $($env:SYSTEM_STAGENAME)
-$name = $($env:name)
 
 Write-Host "Creating infrastructure on stage $stage for application $name"
 

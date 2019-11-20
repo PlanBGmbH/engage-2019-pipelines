@@ -1,5 +1,6 @@
 parameters:  
   location: 'westeurope'
+  name: ''
 
 steps:
 - download: current
@@ -12,7 +13,7 @@ steps:
     scriptType: 'pscore'
     scriptLocation: 'scriptPath'
     scriptPath: '$(Pipeline.Workspace)/arm/deploy.ps1'
-    arguments: '-location ${{ parameters.location }}'    
+    arguments: '-location ${{ parameters.location }} -name ${{ parameters.name }}'    
   
 - task: AzureFunctionApp@1
   displayName: Deploy Function App
