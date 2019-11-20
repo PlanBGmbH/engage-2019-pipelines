@@ -2,5 +2,5 @@
 A repository for collection resources for the Azure Multistage Pipelines
 
 ## Getting Started
-Run this script:
-.\Setup.ps1
+1. Run this script: .\Setup.ps1 -location <location>
+2. Enjoy
