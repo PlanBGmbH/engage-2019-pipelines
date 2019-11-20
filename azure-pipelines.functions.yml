@@ -3,6 +3,15 @@ parameters:
 
 steps:
 - download: build
+- download: arm
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise – MPN'
+    scriptType: 'ps'
+    scriptLocation: 'scriptPath'
+    scriptPath: 'templates/deploy.ps1'
+    arguments: '-location ${{ parameters.location }}'
+  
 - task: AzureFunctionApp@1
   displayName: Deploy Function App
   inputs:
