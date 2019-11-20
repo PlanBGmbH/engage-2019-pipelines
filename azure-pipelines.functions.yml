@@ -2,8 +2,10 @@ parameters:
   location: 'westeurope'
 
 steps:
-- download: build
-- download: arm
+- download: current
+  artifact: app
+- download: current
+  artifact: arm
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Visual Studio Enterprise – MPN'
