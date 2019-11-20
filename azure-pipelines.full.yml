@@ -28,7 +28,7 @@ stages:
             inputs:
               command: 'publish'
               publishWebProjects: false
-              arguments: '--configuration Release --output app --no-restore'
+              arguments: '--configuration Release --output $(Pipeline.Workspace)/app --no-restore'
               modifyOutputPath: false
           - task: PublishPipelineArtifact@1
             inputs:
