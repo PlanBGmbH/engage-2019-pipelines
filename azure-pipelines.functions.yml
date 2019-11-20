@@ -1,6 +1,9 @@
 parameters:  
   location: 'westeurope'
 
+variables:
+  functionAppName: $name-$(System.StageName)-${{ parameters.location }}
+
 steps:
 - download: current
   artifact: build
@@ -19,6 +22,6 @@ steps:
   inputs:
     azureSubscription: 'Visual Studio Enterprise – MPN'
     appType: 'functionApp'
-    appName: '$name-$stage-${{ parameters.location }}'
+    appName: $functionAppName
     package: '$(Pipeline.Workspace)/build/app.zip'
     deploymentMethod: 'auto'
