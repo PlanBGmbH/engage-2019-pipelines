@@ -51,7 +51,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
   - stage: integrationtests
     displayName: Integration Tests
     dependsOn: dev
@@ -63,7 +63,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
   - stage: componenttests
     displayName: Component Tests
     dependsOn: dev
@@ -75,7 +75,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
   - stage: endtoendtests
     displayName: End-To-End Tests
     dependsOn: dev
@@ -87,7 +87,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
   - stage: uat
     displayName: UAT
     dependsOn: 
@@ -102,7 +102,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
   - stage: canary
     displayName: Production Canary
     dependsOn: uat
@@ -114,7 +114,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
   - stage: ea
     displayName: Production EarlyAdopters
     dependsOn: canary
@@ -126,7 +126,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
   - stage: prod
     displayName: Production Live
     dependsOn: ea
@@ -138,4 +138,4 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - script: echo "Deploy"
+            - template: azure-pipelines.functions.yml
