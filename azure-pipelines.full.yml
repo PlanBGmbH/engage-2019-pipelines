@@ -7,6 +7,9 @@ trigger:
 - hotfix/*
 - refs/tags/*
 
+variables:
+  name: engage2019
+
 stages:      
   - stage: build
     displayName: Build    
@@ -57,6 +60,15 @@ stages:
           deploy:          
             steps:
             - template: azure-pipelines.functions.yml
+  - stage: wait
+    displayName: Wait
+    dependsOn: dev
+    jobs:
+    - job: 
+      steps:
+      - task: Wai
+- task: ManualIntervention@8
+  inputs:
   - stage: integrationtests
     displayName: Integration Tests
     dependsOn: dev
