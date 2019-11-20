@@ -8,5 +8,6 @@ steps:
   inputs:
     appName: $name-$stage-${{ parameters.location }}
     resourceGroupName: $name-$stage-$location
-    azureSubscription: 
+    azureSubscription: Visual Studio Enterprise – MPN
     appType: functionApp
+    package: app.zip
