@@ -60,6 +60,8 @@ stages:
           deploy:          
             steps:
             - template: azure-pipelines.functions.yml
+              parameters: 
+                name: $name
   - stage: integrationtests
     displayName: Integration Tests
     dependsOn: dev
@@ -71,7 +73,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - template: azure-pipelines.functions.yml
+            - template: azure-pipelines.tests.yml
   - stage: componenttests
     displayName: Component Tests
     dependsOn: dev
@@ -83,7 +85,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - template: azure-pipelines.functions.yml
+            - template: azure-pipelines.tests.yml
   - stage: endtoendtests
     displayName: End-To-End Tests
     dependsOn: dev
@@ -95,7 +97,7 @@ stages:
         runOnce:
           deploy:          
             steps:
-            - template: azure-pipelines.functions.yml
+            - template: azure-pipelines.tests.yml
   - stage: uat
     displayName: UAT
     dependsOn: 
@@ -111,6 +113,8 @@ stages:
           deploy:          
             steps:
             - template: azure-pipelines.functions.yml
+              parameters: 
+                name: $name
   - stage: canary
     displayName: Production Canary
     dependsOn: uat
@@ -123,6 +127,8 @@ stages:
           deploy:          
             steps:
             - template: azure-pipelines.functions.yml
+              parameters: 
+                name: $name
   - stage: ea
     displayName: Production EarlyAdopters
     dependsOn: canary
@@ -135,6 +141,8 @@ stages:
           deploy:          
             steps:
             - template: azure-pipelines.functions.yml
+              parameters: 
+                name: $name
   - stage: prod
     displayName: Production Live
     dependsOn: ea
@@ -147,3 +155,5 @@ stages:
           deploy:          
             steps:
             - template: azure-pipelines.functions.yml
+              parameters: 
+                name: $name
