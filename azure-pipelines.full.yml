@@ -61,7 +61,7 @@ stages:
             steps:
             - template: azure-pipelines.functions.yml
               parameters: 
-                name: $name
+                name: $(name)
   - stage: integrationtests
     displayName: Integration Tests
     dependsOn: dev
@@ -114,7 +114,7 @@ stages:
             steps:
             - template: azure-pipelines.functions.yml
               parameters: 
-                name: $name
+                name: $(name)
   - stage: canary
     displayName: Production Canary
     dependsOn: uat
@@ -128,7 +128,7 @@ stages:
             steps:
             - template: azure-pipelines.functions.yml
               parameters: 
-                name: $name
+                name: $(name)
   - stage: ea
     displayName: Production EarlyAdopters
     dependsOn: canary
@@ -142,7 +142,7 @@ stages:
             steps:
             - template: azure-pipelines.functions.yml
               parameters: 
-                name: $name
+                name: $(name)
   - stage: prod
     displayName: Production Live
     dependsOn: ea
@@ -156,4 +156,4 @@ stages:
             steps:
             - template: azure-pipelines.functions.yml
               parameters: 
-                name: $name
+                name: $(name)
