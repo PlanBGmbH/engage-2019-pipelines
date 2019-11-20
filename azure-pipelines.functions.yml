@@ -9,7 +9,7 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Visual Studio Enterprise – MPN'
-    scriptType: 'ps'
+    scriptType: 'pscore'
     scriptLocation: 'scriptPath'
     scriptPath: '$(Pipeline.Workspace)/arm/deploy.ps1'
     arguments: '-location ${{ parameters.location }}'    
