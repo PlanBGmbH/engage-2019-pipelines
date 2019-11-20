@@ -14,14 +14,27 @@ stages:
       - job:    
         displayName: 'Build Application'  
         steps:
-          - script: dotnet restore .            
-          - script: dotnet build .            
-          - script: dotnet test .
-          - script: dotnet publish .
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'restore'
+              feedsToUse: 'select'
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'test'
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'publish'
+              publishWebProjects: false
+              arguments: '--configuration Release --output app --no-restore'
+              modifyOutputPath: false
           - task: PublishPipelineArtifact@1
             inputs:
-              targetPath: '$(Pipeline.Workspace)'
-              artifact: 'build'              
+              targetPath: '$(Pipeline.Workspace)/app'
+              artifact: 'build'
+              publishLocation: 'pipeline'
           
   - stage: dev
     displayName: Development
