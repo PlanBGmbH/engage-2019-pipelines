@@ -3,6 +3,9 @@ Param(
 )
 
 $stage = $($env:SYSTEM_STAGENAME)
+$name = $($env:name)
+
+Write-Host "Creating infrastructure on stage $stage for application $name"
 
 $group = (az group create --location $location --name "$name-$stage-$location") | ConvertFrom-Json
 Write-Host "Created ResourceGroup $($group.Name)"
