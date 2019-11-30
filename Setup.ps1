@@ -23,7 +23,7 @@ $repository = az repos create --name $repositoryName --project $project | Conver
 git remote add devops $repository.remoteUrl
 git add .
 git commit -m "Initialize Repository"
-git push devops
+git push devops master
 
 ## Create Pipeline
 az pipelines create --name engage2019-pipeline --repository $repositoryName --repository-type github --yaml-path azure-pipelines.yml --branch master --organization $organization --project $project
