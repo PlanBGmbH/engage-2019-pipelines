@@ -35,10 +35,19 @@ $serviceConnectionResult = az devops service-endpoint azurerm create --azure-rm-
                                                                      --azure-rm-subscription-id $subscriptionId `
                                                                      --azure-rm-subscription-name $subscriptionName `
                                                                      --azure-rm-tenant-id $tenantId `
-                                                                     --name AzureRM
+                                                                     --name AzureRM `
+                                                                     --project $project `
+                                                                     --organization $organization `
 
 $serviceConnection = $serviceConnectionResult | ConvertFrom-Json
 Write-Host $serviceConnection
 
 ## Create Pipeline
-az pipelines create --name engage2019-pipeline --repository $repositoryName --repository-type tfsgit --yaml-path azure-pipelines.yml --branch master --organization $organization --project $project --service-connection $serviceConnection.id
+az pipelines create --name engage2019-pipeline `
+                    --repository $repositoryName `
+                    --repository-type tfsgit `
+                    --yaml-path azure-pipelines.yml `
+                    --branch master `
+                    --organization $organization `
+                    --project $project `
+                    --service-connection $serviceConnection.id
