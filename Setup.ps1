@@ -15,9 +15,9 @@ dotnet new mstest --name "$repositoryName.UnitTests" -o "./$repositoryName.UnitT
 dotnet sln "$repositoryName.sln" add "./$repositoryName/$repositoryName.csproj"
 dotnet sln "$repositoryName.sln" add "./$repositoryName.UnitTests/$repositoryName.UnitTests.csproj"
 
-## Create Repo
+## Create Project
 az devops project create --name $project --organization $organization --open
-$repository = az repos create --name $repositoryName --project $project | ConvertFrom-Json
+$repository = az repos create --name $repositoryName --project $project --organization $organization | ConvertFrom-Json
 
 ## Add changes
 git remote add devops $repository.remoteUrl
