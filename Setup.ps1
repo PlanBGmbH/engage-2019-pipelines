@@ -11,6 +11,7 @@ dotnet new mstest --name "$repositoryName.UnitTests" -o "./$repositoryName.UnitT
 dotnet sln "$repositoryName.sln" add "./$repositoryName/$repositoryName.csproj"
 dotnet sln "$repositoryName.sln" add "./$repositoryName.UnitTests/$repositoryName.UnitTests.csproj"
 
-## Create Pipeline
+## Create Pipeline 
+az devops project create --name engage2019-project --organization https://dev.azure.com/wendelin --source-control git --visibility private --open
 az pipelines create --name engage2019-pipeline --repository DSpirit/engage2019-pipelines --repository-type github --yaml-path azure-pipelines.yml --branch master --organization https://dev.azure.com/wendelin --project dsdev --service-connection "849386f3-11ef-4659-ab84-4ec6538434622"
 
