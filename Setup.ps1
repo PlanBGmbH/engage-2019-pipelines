@@ -26,4 +26,4 @@ git commit -m "Initialize Repository"
 git push devops master
 
 ## Create Pipeline
-az pipelines create --name engage2019-pipeline --repository $repositoryName --repository-type github --yaml-path azure-pipelines.yml --branch master --organization $organization --project $project
+az pipelines create --name engage2019-pipeline --repository $repositoryName --repository-type tfsgit --yaml-path azure-pipelines.yml --branch master --organization $organization --project $project
