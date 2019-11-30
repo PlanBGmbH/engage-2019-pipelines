@@ -35,7 +35,7 @@ $serviceConnectionResult = az devops service-endpoint azurerm create --azure-rm-
                                                                      --azure-rm-subscription-id $subscriptionId `
                                                                      --azure-rm-subscription-name $subscriptionName `
                                                                      --azure-rm-tenant-id $tenantId `
-                                                                     --name AzureRM `
+                                                                     --name "Visual Studio Enterprise - MPN" `
                                                                      --project $project `
                                                                      --organization $organization `
 

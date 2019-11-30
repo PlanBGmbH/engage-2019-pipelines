@@ -9,7 +9,7 @@ steps:
   artifact: arm
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'Visual Studio Enterprise – MPN'
+    azureSubscription: 'Visual Studio Enterprise - MPN'
     scriptType: 'pscore'
     scriptLocation: 'scriptPath'
     scriptPath: '$(Pipeline.Workspace)/arm/deploy.ps1'
@@ -18,7 +18,7 @@ steps:
 - task: AzureFunctionApp@1
   displayName: Deploy Function App
   inputs:
-    azureSubscription: 'Visual Studio Enterprise – MPN'
+    azureSubscription: 'Visual Studio Enterprise - MPN'
     appType: 'functionApp'
     appName: $(name)-$(System.StageName)-${{ parameters.location }}
     package: '$(Pipeline.Workspace)/build/app.zip'
